@@ -29,8 +29,26 @@
   code{background:#EEF5F1;padding:1px 6px;border-radius:5px;font-size:12px;word-break:break-all}
   footer{margin-top:30px;font-size:12px;color:var(--muted)}
 </style>
+<style id="wc-brand-css">
+  .wc-top{background:#fff;border-bottom:1px solid #E6E8EB}
+  .wc-top .in{max-width:860px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .wc-top a{display:inline-flex;align-items:center;text-decoration:none}
+  .wc-top img{height:26px;width:auto;display:block}
+  .wc-top .tag{font:600 12px/1 'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:1.4px;text-transform:uppercase;color:#4D4E4E}
+  .wc-top .tag b{color:#53A151;font-weight:700}
+  .wc-foot{background:#fff;border-top:1px solid #E6E8EB;margin-top:24px}
+  .wc-foot .in{max-width:860px;margin:0 auto;padding:26px 20px 30px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px 28px;font:13px/1.5 'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;color:#6B727B}
+  .wc-foot img{height:22px;width:auto;display:block}
+  .wc-foot .brand{display:flex;align-items:center;gap:14px}
+  .wc-foot .brand span{border-left:1px solid #DADDE1;padding-left:14px}
+  .wc-foot .links a{color:#4D4E4E;text-decoration:none;font-weight:600}
+  .wc-foot .links a:hover{color:#53A151}
+  .wc-foot .links i{font-style:normal;color:#C4C8CD;margin:0 8px}
+  @media (max-width:700px){.wc-top .tag{display:none} .wc-foot .in{flex-direction:column;align-items:flex-start}}
+</style>
 </head>
 <body>
+<div class="wc-top" id="wc-top"><div class="in"><a href="https://www.webcastle.qa/" target="_blank" rel="noopener" aria-label="WebCastle"><img src="/assets/webcastle-wordmark.png" alt="WebCastle"></a><span class="tag">Email Signature Studio <b>&middot;</b> by WebCastle</span></div></div>
 <header><div class="in"><p>SpaceFlex Technologies LLC</p><h1>Email signature: Abdul Rahman</h1></div></header>
 <div class="wrap">
   <div class="card" id="sig">
@@ -214,7 +232,7 @@
   </div>
   <footer>After pasting, the name, title, phone number, email, website and location can be edited directly in Outlook or Gmail. Images are hosted at https://spaceflex-email-signature.vercel.app/assets/. Keep this site online so they keep loading.</footer>
 </div>
-<div id="powered-by" style="text-align:center;padding:8px 20px 36px;font-family:'Segoe UI','Helvetica Neue',Helvetica,Arial,sans-serif;font-size:13px;color:#8A9099;">Powered by <a href="https://www.webcastle.qa/" target="_blank" rel="noopener" style="color:#1F2328;font-weight:700;text-decoration:none;">WebCastle</a></div>
+<footer class="wc-foot" id="wc-foot"><div class="in"><div class="brand"><a href="https://www.webcastle.qa/" target="_blank" rel="noopener"><img src="/assets/webcastle-wordmark.png" alt="WebCastle"></a><span>Designed &amp; managed by WebCastle</span></div><div class="links"><a href="https://www.webcastle.qa/" target="_blank" rel="noopener">www.webcastle.qa</a><i>|</i><a href="mailto:mail@webcastle.qa">mail@webcastle.qa</a><i>|</i><a href="tel:+97471211903">+974 7121 1903</a></div></div></footer>
 <script>
 document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('click', async () => {
   const el = document.querySelector('#' + btn.dataset.copy + ' > table');
