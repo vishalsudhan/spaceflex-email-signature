@@ -47,6 +47,10 @@
   .wc-foot .brand span{border-left:1px solid #DADDE1;padding-left:14px}
   @media (max-width:760px){.wc-top .tag{display:none} .wc-top .links{gap:8px 16px;font-size:12.5px} .wc-foot .in{flex-direction:column;align-items:flex-start}}
 </style>
+<style id="wm-css">
+  .btn.wm{background:#fff;color:#1F2328;border:1px dashed #9AA1A9}
+  .btn.wm:hover{border-style:solid}
+</style>
 </head>
 <body>
 <div class="wc-top" id="wc-top"><div class="in"><div class="brand"><a href="https://www.webcastle.qa/" target="_blank" rel="noopener" aria-label="WebCastle"><img src="/assets/webcastle-wordmark.png" alt="WebCastle"></a><span class="tag">Email Signature Studio</span></div><div class="links"><a href="tel:+97471211903"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg>+974 7121 1903</a><a href="mailto:mail@webcastle.qa"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>mail@webcastle.qa</a><a href="https://www.webcastle.qa/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>www.webcastle.qa</a></div></div></div><!--/wc-top-->
@@ -214,6 +218,7 @@
     <button class="btn g" data-copy="sig">Copy for Outlook</button>
     <button class="btn d" data-copy="sig-gmail">Copy for Gmail</button>
     <a class="btn ghost" href="/signature.html" download="SpaceFlex - Abdul Rahman.htm">Download .htm (classic Outlook)</a>
+    <button class="btn wm" id="copy-code" type="button">Copy HTML code (webmail)</button>
     <span class="toast" id="toast"></span>
   </div>
   <h2>How to install</h2>
@@ -226,6 +231,7 @@
       <li>Click <b>Download .htm</b>.</li>
       <li>Press Win+R, open <code>%APPDATA%\Microsoft\Signatures</code>.</li>
       <li>Move the file there, then File → Options → Mail → Signatures and select it.</li></ol></div>
+      <div class="step" id="wm-step"><h3>Webmail (Roundcube / cPanel)</h3><ol><li>Click <b>Copy HTML code</b>.</li><li>Settings → Identities → your email. Switch <b>HTML signature</b> on and clear the box.</li><li>Click the <b>&lt;&gt;</b> (Source code) button, paste, click OK, then <b>Save</b>.</li><li>Settings → Preferences → Composing Messages → <b>Compose HTML messages: always</b>.</li></ol></div>
     <div class="step"><h3>Gmail</h3><ol>
       <li>Click <b>Copy for Gmail</b>.</li>
       <li>Gmail → Settings → See all settings → General → Signature → Create new.</li>
@@ -253,6 +259,15 @@ document.querySelectorAll('[data-copy]').forEach(btn => btn.addEventListener('cl
     s.removeAllRanges();
   }
 }));
+</script>
+<script id="wm-js">
+document.getElementById('copy-code').addEventListener('click', async () => {
+  const html = (typeof build === 'function') ? build('outlook') : document.querySelector('#sig > table').outerHTML;
+  const toast = document.getElementById('toast');
+  try { await navigator.clipboard.writeText(html); }
+  catch (e) { const t = document.createElement('textarea'); t.value = html; document.body.appendChild(t); t.select(); document.execCommand('copy'); t.remove(); }
+  toast.textContent = 'HTML code copied. In your webmail, open the signature Source code (<>) box and paste it there.';
+});
 </script>
 </body>
 </html>
